@@ -1,0 +1,29 @@
+import time
+import winsound  # For Windows OS sound, use 'playsound' for other OS
+
+# Function to set and ring the alarm
+def alarm_clock():
+    # Ask the user for the time to set the alarm (24-hour format)
+    alarm_time = input("Enter the alarm time (HH:MM:SS, 24-hour format): ")
+    
+    # Get the current time
+    print("Setting up your alarm...")
+    print(f"Alarm set for: {alarm_time}")
+    
+    while True:
+        # Get the current time in HH:MM:SS format
+        current_time = time.strftime("%H:%M:%S")
+        
+        # Check if the current time matches the alarm time
+        if current_time == alarm_time:
+            print("It's time! Your alarm is ringing!")
+            
+            # Play a sound (change this to another library for non-Windows)
+            winsound.Beep(1000, 1000)  # 1000 Hz, 1-second duration
+            break
+        
+        # Wait for 1 second before checking the time again
+        time.sleep(1)
+
+# Run the alarm clock function
+alarm_clock()
